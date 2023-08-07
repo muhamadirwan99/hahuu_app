@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:hahuu_app/state_util.dart';
 import '../view/tentukan_talent_view.dart';
 
 class TentukanTalentController extends State<TentukanTalentView> {
   static late TentukanTalentController instance;
   late TentukanTalentView view;
+
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   void initState() {

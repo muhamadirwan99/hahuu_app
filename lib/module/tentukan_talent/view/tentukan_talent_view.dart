@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hahuu_app/core.dart';
-import '../controller/tentukan_talent_controller.dart';
 
 class TentukanTalentView extends StatefulWidget {
   const TentukanTalentView({Key? key}) : super(key: key);
@@ -12,11 +11,74 @@ class TentukanTalentView extends StatefulWidget {
       appBar: AppBar(
         title: const Text("Tentukan Talent"),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Container(
+        color: neutralWhite,
+        padding: const EdgeInsets.only(
+          top: 16,
+          bottom: 16,
+          right: 25,
+          left: 25,
+        ),
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              backgroundColor: blue900,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+            onPressed: () {
+              if (controller.formKey.currentState!.validate()) {
+                Get.to(const PenokohanView());
+              }
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                "Selanjutnya",
+                style: myTextTheme.titleSmall?.copyWith(
+                  color: neutralWhite,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: const [],
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Form(
+            key: controller.formKey,
+            child: Column(
+              children: [
+                const TittleForm(label: "Aksara"),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                BaseForm(
+                  hintText: "Masukkan nama talent aksara",
+                  onChanged: (value) {},
+                  validator:
+                      Validatorless.required("Nama talent aksara harus diisi"),
+                ),
+                const SizedBox(
+                  height: 24.0,
+                ),
+                const TittleForm(label: "Damar"),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                BaseForm(
+                  hintText: "Masukkan nama talent damar",
+                  onChanged: (value) {},
+                  validator:
+                      Validatorless.required("Nama talent damar harus diisi"),
+                ),
+              ],
+            ),
           ),
         ),
       ),

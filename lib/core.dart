@@ -69,6 +69,7 @@ export 'package:hahuu_app/shared/widget/form/rating/rating_field.dart';
 export 'package:hahuu_app/shared/widget/form/switch/switch.dart';
 export 'package:hahuu_app/shared/widget/form/textfield/text_field.dart';
 export 'package:hahuu_app/shared/widget/form/time_picker/timepicker.dart';
+export 'package:hahuu_app/shared/widget/form/tittle_form.dart';
 export 'package:hahuu_app/shared/widget/form/__form_detail_example.dart';
 export 'package:hahuu_app/shared/widget/form/__form_example.dart';
 export 'package:hahuu_app/shared/widget/list/list_view.dart';
