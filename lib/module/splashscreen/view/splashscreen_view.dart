@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:hahuu_app/core.dart';
 
 // ignore: must_be_immutable
@@ -16,14 +15,19 @@ class SplashscreenView extends StatefulWidget {
     return Scaffold(
       backgroundColor: neutralWhite,
       resizeToAvoidBottomInset: false,
-      body: Container(
+      body: Padding(
         padding: const EdgeInsets.all(16.0),
-        alignment: Alignment.center,
         child: Column(
-          children: const [
-            Spacer(),
-            // Lottie.asset('assets/file/json/logo_sakti.json'),
-            Spacer(),
+          children: [
+            const Spacer(),
+            Center(
+              child: Image.network(
+                'https://static.vecteezy.com/system/resources/previews/011/883/287/original/modern-letter-c-colorful-logo-with-watter-drop-good-for-technology-logo-company-logo-dummy-logo-bussiness-logo-free-vector.jpg',
+                height: 200,
+                width: 200,
+              ),
+            ),
+            const Spacer(),
           ],
         ),
       ),

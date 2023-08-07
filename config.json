@@ -1,9 +1,11 @@
 {
     "modules": [
-        "login",
         "beranda",
         "splashscreen",
-        "ubah_katasandi"
+        "data_pemain",
+        "tentukan_talent",
+        "penokohan",
+        "arena_bermain"
     ],
     "module_directory_name": "module",
     "experimental_mode": false,

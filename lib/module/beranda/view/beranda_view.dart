@@ -11,19 +11,27 @@ class BerandaView extends StatefulWidget {
     controller.view = this;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Hahuu App"),
-      ),
-      body: SingleChildScrollView(
-        controller: ScrollController(),
+      body: Padding(
+        padding: const EdgeInsets.all(24),
         child: Column(
-          children: const [
-            // if (UserDatabase.dataRole!["sts_verifikasi"] == "1")
-            //   const LayananVerifikator(),
-
-            SizedBox(
+          children: [
+            const Spacer(),
+            Center(
+              child: Image.network(
+                'https://static.vecteezy.com/system/resources/previews/011/883/287/original/modern-letter-c-colorful-logo-with-watter-drop-good-for-technology-logo-company-logo-dummy-logo-bussiness-logo-free-vector.jpg',
+                height: 200,
+                width: 200,
+              ),
+            ),
+            const SizedBox(
               height: 24.0,
             ),
+            PrimaryButton(
+                onPressed: () {
+                  Get.to(const DataPemainView());
+                },
+                text: "Mari Bermain"),
+            const Spacer(),
           ],
         ),
       ),
