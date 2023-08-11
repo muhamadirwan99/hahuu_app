@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:hahuu_app/core.dart';
 
 class DataPemainView extends StatefulWidget {
-  const DataPemainView({Key? key}) : super(key: key);
+  final double sliderValue;
+  const DataPemainView({
+    Key? key,
+    required this.sliderValue,
+  }) : super(key: key);
 
   Widget build(context, DataPemainController controller) {
     controller.view = this;
@@ -32,7 +36,15 @@ class DataPemainView extends StatefulWidget {
             ),
             onPressed: () {
               if (controller.formKey.currentState!.validate()) {
-                Get.to(const TentukanTalentView());
+                for (var i = 0;
+                    i < controller.listControllerTextField.length;
+                    i++) {
+                  controller.dataPemain
+                      .add(controller.listControllerTextField[i].text);
+                }
+                Get.to(TentukanTalentView(
+                  dataPemain: controller.dataPemain,
+                ));
               }
             },
             child: Padding(
@@ -54,21 +66,14 @@ class DataPemainView extends StatefulWidget {
             key: controller.formKey,
             child: Column(
               children: [
-                Slider(
-                  value: controller.sliderValue,
-                  max: 10,
-                  divisions: 10,
-                  label: controller.sliderValue.round().toString(),
-                  onChanged: (double value) {
-                    controller.sliderValue = value;
-                    controller.update();
-                  },
-                ),
                 ListView.builder(
-                  itemCount: controller.sliderValue.round(),
+                  itemCount: sliderValue.round(),
                   shrinkWrap: true,
                   physics: const ScrollPhysics(),
                   itemBuilder: (BuildContext context, int index) {
+                    controller.listControllerTextField
+                        .add(TextEditingController());
+
                     return Column(
                       children: [
                         Row(
@@ -84,7 +89,11 @@ class DataPemainView extends StatefulWidget {
                             Expanded(
                               child: BaseForm(
                                 hintText: "Pemain ${index + 1}",
-                                onChanged: (value) {},
+                                controllerTextField:
+                                    controller.listControllerTextField[index],
+                                onChanged: (value) {
+                                  // controller.dataPemain.add(value);
+                                },
                                 validator: Validatorless.required(
                                     "Pemain ${index + 1} tidak boleh kosong"),
                               ),

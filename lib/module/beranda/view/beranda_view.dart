@@ -28,9 +28,33 @@ class BerandaView extends StatefulWidget {
             ),
             PrimaryButton(
                 onPressed: () {
-                  Get.to(const DataPemainView());
+                  Get.to(DataPemainView(
+                    sliderValue: controller.sliderValue,
+                  ));
                 },
                 text: "Mari Bermain"),
+            const SizedBox(
+              height: 32,
+            ),
+            Text(
+              "Jumlah Pemain: ${controller.sliderValue.round()}",
+              style: myTextTheme.displayLarge?.copyWith(
+                color: neutralBlack,
+              ),
+            ),
+            const SizedBox(
+              height: 8.0,
+            ),
+            Slider(
+              value: controller.sliderValue,
+              max: 10,
+              divisions: 10,
+              label: controller.sliderValue.round().toString(),
+              onChanged: (double value) {
+                controller.sliderValue = value;
+                controller.update();
+              },
+            ),
             const Spacer(),
           ],
         ),

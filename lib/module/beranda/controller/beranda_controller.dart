@@ -5,6 +5,8 @@ class BerandaController extends State<BerandaView> implements MvcController {
   static late BerandaController instance;
   late BerandaView view;
 
+  double sliderValue = 3;
+
   @override
   void initState() {
     instance = this;

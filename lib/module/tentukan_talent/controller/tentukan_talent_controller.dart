@@ -5,6 +5,10 @@ class TentukanTalentController extends State<TentukanTalentView> {
   static late TentukanTalentController instance;
   late TentukanTalentView view;
 
+  List dataTalent = [];
+  TextEditingController aksaraController = TextEditingController();
+  TextEditingController damarController = TextEditingController();
+
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override

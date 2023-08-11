@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:hahuu_app/core.dart';
 
 class TentukanTalentView extends StatefulWidget {
-  const TentukanTalentView({Key? key}) : super(key: key);
+  final List dataPemain;
+  const TentukanTalentView({
+    Key? key,
+    required this.dataPemain,
+  }) : super(key: key);
 
   Widget build(context, TentukanTalentController controller) {
     controller.view = this;
@@ -32,7 +36,12 @@ class TentukanTalentView extends StatefulWidget {
             ),
             onPressed: () {
               if (controller.formKey.currentState!.validate()) {
-                Get.to(const PenokohanView());
+                controller.dataTalent.add(controller.aksaraController.text);
+                controller.dataTalent.add(controller.damarController.text);
+                Get.to(PenokohanView(
+                  dataTalent: controller.dataTalent,
+                  dataPemain: dataPemain,
+                ));
               }
             },
             child: Padding(
@@ -60,6 +69,7 @@ class TentukanTalentView extends StatefulWidget {
                 ),
                 BaseForm(
                   hintText: "Masukkan nama talent aksara",
+                  controllerTextField: controller.aksaraController,
                   onChanged: (value) {},
                   validator:
                       Validatorless.required("Nama talent aksara harus diisi"),
@@ -73,6 +83,7 @@ class TentukanTalentView extends StatefulWidget {
                 ),
                 BaseForm(
                   hintText: "Masukkan nama talent damar",
+                  controllerTextField: controller.damarController,
                   onChanged: (value) {},
                   validator:
                       Validatorless.required("Nama talent damar harus diisi"),

@@ -1,7 +1,7 @@
 import 'package:hahuu_app/core.dart';
 import 'package:flutter/material.dart';
 
-Future showInfoDialog(String message) async {
+Future showInfoDialog(String message, Function() onPressed) async {
   await showDialog<void>(
     context: globalContext,
     barrierDismissible: true,
@@ -11,7 +11,7 @@ Future showInfoDialog(String message) async {
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
         title: Text(
           'Info',
-          style: myTextTheme.displaySmall?.copyWith(color: green700),
+          style: myTextTheme.headlineLarge?.copyWith(color: blue800),
         ),
         content: SingleChildScrollView(
           child: ListBody(
@@ -29,11 +29,9 @@ Future showInfoDialog(String message) async {
           Center(
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: green600,
+                backgroundColor: blue900,
               ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
+              onPressed: onPressed,
               child: const Text("OK"),
             ),
           ),

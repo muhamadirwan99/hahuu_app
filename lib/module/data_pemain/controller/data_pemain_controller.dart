@@ -5,7 +5,8 @@ class DataPemainController extends State<DataPemainView> {
   static late DataPemainController instance;
   late DataPemainView view;
 
-  double sliderValue = 3;
+  List dataPemain = [];
+  List listControllerTextField = [];
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 

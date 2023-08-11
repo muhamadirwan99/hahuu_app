@@ -5,12 +5,14 @@ class BaseForm extends StatefulWidget {
   final String hintText;
   final Function(String value) onChanged;
   final String? Function(String?)? validator;
+  final TextEditingController? controllerTextField;
 
   const BaseForm({
     Key? key,
     required this.hintText,
     required this.onChanged,
     required this.validator,
+    this.controllerTextField,
   }) : super(key: key);
 
   @override
@@ -22,6 +24,7 @@ class _BaseFormState extends State<BaseForm> {
   Widget build(BuildContext context) {
     return TextFormField(
       style: myTextTheme.bodyMedium?.copyWith(color: gray800),
+      controller: widget.controllerTextField,
       textAlignVertical: TextAlignVertical.bottom,
       decoration: InputDecoration(
         hintText: widget.hintText,
