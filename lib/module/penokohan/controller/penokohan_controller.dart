@@ -49,10 +49,14 @@ class PenokohanController extends State<PenokohanView> {
     view = widget;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       showInfoDialog(
-          "Silahkan ${view.dataPemain[lengthPenokohan]} untuk memilih penokohan",
-          () {
-        Get.back();
-      });
+        "Silahkan ${view.dataPemain[lengthPenokohan]} untuk memilih penokohan",
+        () {
+          Get.back();
+        },
+        DialogTransitionType.fade,
+        Curves.fastOutSlowIn,
+        const Duration(seconds: 1),
+      );
     });
     generateShuffledList(view.dataPemain, view.dataTalent);
 

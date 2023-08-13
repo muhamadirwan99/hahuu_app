@@ -86,14 +86,22 @@ class PenokohanView extends StatefulWidget {
                           if (controller.lengthPenokohan + 1 <
                               dataPemain.length) {
                             showInfoDialog(
-                                "Silahkan ${dataPemain[controller.lengthPenokohan + 1]} untuk memilih penokohan",
-                                () {
-                              Get.back();
-                            });
+                              "Silahkan ${dataPemain[controller.lengthPenokohan + 1]} untuk memilih penokohan",
+                              () {
+                                Get.back();
+                              },
+                              DialogTransitionType.fade,
+                              Curves.fastOutSlowIn,
+                              const Duration(seconds: 1),
+                            );
                           }
+
                           showInfoDialog(
                             "Pemain ${controller.dataPenokohan[index]} adalah ${controller.shuffledList[index]}",
                             () => (Get.back()),
+                            DialogTransitionType.slideFromLeft,
+                            Curves.fastOutSlowIn,
+                            const Duration(seconds: 1),
                           );
                           controller.lengthPenokohan++;
 

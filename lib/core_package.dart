@@ -4,3 +4,4 @@ export 'package:intl/intl.dart';
 export 'package:google_fonts/google_fonts.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:validatorless/validatorless.dart';
+export 'package:flutter_animated_dialog/flutter_animated_dialog.dart';

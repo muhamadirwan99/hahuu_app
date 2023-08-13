@@ -1,10 +1,16 @@
 import 'package:hahuu_app/core.dart';
 import 'package:flutter/material.dart';
 
-Future showInfoDialog(String message, Function() onPressed) async {
-  await showDialog<void>(
+Future showInfoDialog(
+  String message,
+  Function() onPressed,
+  dynamic animationType,
+  Curve curve,
+  Duration duration,
+) async {
+  await showAnimatedDialog(
     context: globalContext,
-    barrierDismissible: true,
+    barrierDismissible: false,
     builder: (BuildContext context) {
       return AlertDialog(
         shape:
@@ -38,5 +44,8 @@ Future showInfoDialog(String message, Function() onPressed) async {
         ],
       );
     },
+    animationType: animationType,
+    curve: curve,
+    duration: duration,
   );
 }
