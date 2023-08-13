@@ -41,6 +41,8 @@ class TentukanTalentView extends StatefulWidget {
                 Get.to(PenokohanView(
                   dataTalent: controller.dataTalent,
                   dataPemain: dataPemain,
+                  aksaraTalent: controller.aksaraController.text,
+                  damarTalent: controller.damarController.text,
                 ));
               }
             },

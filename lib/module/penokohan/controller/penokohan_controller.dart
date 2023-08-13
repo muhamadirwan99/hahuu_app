@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../view/penokohan_view.dart';
+import 'package:hahuu_app/core.dart';
 
 class PenokohanController extends State<PenokohanView> {
   static late PenokohanController instance;
@@ -47,6 +47,15 @@ class PenokohanController extends State<PenokohanView> {
   void initState() {
     instance = this;
     view = widget;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      showInfoDialog(
+          "Silahkan ${view.dataPemain[lengthPenokohan]} untuk memilih penokohan",
+          () {
+        Get.back();
+      });
+    });
+    generateShuffledList(view.dataPemain, view.dataTalent);
+
     dataPenokohan = List.from(view.dataPemain);
     statusPenokohan = List.generate(dataPenokohan.length, (index) => false);
 

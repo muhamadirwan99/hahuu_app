@@ -14,6 +14,8 @@ export 'package:hahuu_app/module/beranda/controller/beranda_controller.dart';
 export 'package:hahuu_app/module/beranda/view/beranda_view.dart';
 export 'package:hahuu_app/module/data_pemain/controller/data_pemain_controller.dart';
 export 'package:hahuu_app/module/data_pemain/view/data_pemain_view.dart';
+export 'package:hahuu_app/module/pemenang/controller/pemenang_controller.dart';
+export 'package:hahuu_app/module/pemenang/view/pemenang_view.dart';
 export 'package:hahuu_app/module/penokohan/controller/penokohan_controller.dart';
 export 'package:hahuu_app/module/penokohan/view/penokohan_view.dart';
 export 'package:hahuu_app/module/splashscreen/controller/splashscreen_controller.dart';

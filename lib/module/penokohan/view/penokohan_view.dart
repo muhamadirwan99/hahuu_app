@@ -3,23 +3,19 @@ import 'package:hahuu_app/core.dart';
 
 class PenokohanView extends StatefulWidget {
   final List dataPemain, dataTalent;
+  final String aksaraTalent, damarTalent;
+
   const PenokohanView({
     Key? key,
     required this.dataPemain,
     required this.dataTalent,
+    required this.aksaraTalent,
+    required this.damarTalent,
   }) : super(key: key);
+
   Widget build(context, PenokohanController controller) {
     controller.view = this;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (controller.lengthPenokohan < dataPemain.length) {
-        showInfoDialog(
-            "Silahkan ${dataPemain[controller.lengthPenokohan]} untuk memilih penokohan",
-            () {
-          Get.back();
-        });
-      }
-    });
-    controller.generateShuffledList(dataPemain, dataTalent);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Penokohan"),
@@ -47,7 +43,12 @@ class PenokohanView extends StatefulWidget {
             onPressed: controller.lengthPenokohan < dataPemain.length
                 ? null
                 : () {
-                    Get.to(const ArenaBermainView());
+                    Get.to(ArenaBermainView(
+                      shuffledList: controller.shuffledList,
+                      dataPenokohan: controller.dataPenokohan,
+                      aksaraTalent: aksaraTalent,
+                      damarTalent: damarTalent,
+                    ));
                   },
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
@@ -82,13 +83,21 @@ class PenokohanView extends StatefulWidget {
                           controller.dataPenokohan[index] =
                               dataPemain[controller.lengthPenokohan];
                           controller.statusPenokohan[index] = true;
-                          controller.lengthPenokohan++;
-
-                          controller.update();
+                          if (controller.lengthPenokohan + 1 <
+                              dataPemain.length) {
+                            showInfoDialog(
+                                "Silahkan ${dataPemain[controller.lengthPenokohan + 1]} untuk memilih penokohan",
+                                () {
+                              Get.back();
+                            });
+                          }
                           showInfoDialog(
                             "Pemain ${controller.dataPenokohan[index]} adalah ${controller.shuffledList[index]}",
                             () => (Get.back()),
                           );
+                          controller.lengthPenokohan++;
+
+                          controller.update();
                         }
                       },
                       child: Container(
@@ -103,11 +112,25 @@ class PenokohanView extends StatefulWidget {
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(16),
-                          child: controller.statusPenokohan[index]
-                              ? Text(
-                                  "Pemain ${controller.dataPenokohan[index]}")
-                              : SvgPicture.asset(
-                                  "assets/images/avatar/avatar_$index.svg"),
+                          child: Column(
+                            children: [
+                              Expanded(
+                                child: SvgPicture.asset(
+                                    "assets/images/avatar/avatar_$index.svg"),
+                              ),
+                              controller.statusPenokohan[index]
+                                  ? Column(
+                                      children: [
+                                        const SizedBox(
+                                          height: 8.0,
+                                        ),
+                                        Text(
+                                            "Pemain ${controller.dataPenokohan[index]}")
+                                      ],
+                                    )
+                                  : const SizedBox(),
+                            ],
+                          ),
                         ),
                       ),
                     ),

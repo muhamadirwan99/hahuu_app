@@ -5,7 +5,8 @@
         "data_pemain",
         "tentukan_talent",
         "penokohan",
-        "arena_bermain"
+        "arena_bermain",
+        "pemenang"
     ],
     "module_directory_name": "module",
     "experimental_mode": false,
